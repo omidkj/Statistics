@@ -1,8 +1,12 @@
-grades = [100, 100, 90, 40, 80, 100, 85, 70, 90, 65, 90, 85, 50.5]
+"""This code reads grades of students from a file and calculates:
+the measures of central tendency (mean, median) and measures of dispersion (variance, standard deviation, interquartile range)
+and z-scores"""
 
-def print_grades(grades):
-    for grade in grades:
-        print grade
+grades = []
+#read the file and store all the grades in grades list:
+with open("grades.txt", "r") as f:
+    for line in f:
+        grades.append(float(line.strip()))
 
 def grades_sum(grades):
     total = 0
@@ -30,6 +34,7 @@ variance = grades_variance(grades)
 
 std_deviation = grades_std_deviation(variance)
 mean= grades_average(grades)
+
 def median(scores):
     sort=sorted(scores)
     if (int(len(sort)) %2) != 0:
@@ -38,8 +43,9 @@ def median(scores):
     else:
         mid= len(scores) /2
         return (sort[mid-1]+sort[mid])/2.0
-
+    
 median_scores = median(grades)
+
 def interquartiles(scores):
     median_scores = median(scores)
     sort=sorted(scores)
@@ -59,6 +65,7 @@ def z_score(scores, std_deviation, mean):
         z_scores.append((x-mean)/std_deviation)
     return z_scores
 z_scores = z_score(grades, std_deviation, mean)
+
 print "Grades: \n %s" % grades
 print "sum of grades: %f " % grades_sum(grades)
 print "Average grade: %f" % grades_average(grades)
