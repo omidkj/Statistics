@@ -8,15 +8,15 @@ with open("grades.txt", "r") as f:
     for line in f:
         grades.append(float(line.strip()))
 
-def grades_sum(grades):
+def grades_sum(scores):
     total = 0
-    for grade in grades: 
+    for grade in scores: 
         total += grade
     return total
     
-def grades_average(grades):
-    sum_of_grades = grades_sum(grades)
-    average = sum_of_grades / float(len(grades))
+def grades_average(scores):
+    sum_of_grades = grades_sum(scores)
+    average = sum_of_grades / float(len(scores))
     return average
 
 def grades_variance(scores):
@@ -30,8 +30,8 @@ def grades_variance(scores):
 
 def grades_std_deviation(variance):
     return variance ** 0.5
-variance = grades_variance(grades)
 
+variance = grades_variance(grades)
 std_deviation = grades_std_deviation(variance)
 mean= grades_average(grades)
 
